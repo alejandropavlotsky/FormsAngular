@@ -11,6 +11,13 @@ export class BasicosComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  precioValido(): boolean {
+    return (
+      this.miFormulario?.controls.precio?.value < 0 &&
+      this.miFormulario?.controls.precio?.touched
+    );
+  }
+
   nombreValido(): boolean {
     return (
       this.miFormulario?.controls.producto?.invalid &&
@@ -20,5 +27,9 @@ export class BasicosComponent implements OnInit {
 
   guardar() {
     console.log(this.miFormulario);
+    if (this.miFormulario.controls.precio.value < 0) {
+      console.log('No poestado');
+      return;
+    }
   }
 }
