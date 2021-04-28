@@ -7,6 +7,13 @@ import { NgForm } from '@angular/forms';
 })
 export class BasicosComponent implements OnInit {
   @ViewChild('miFormulario') miFormulario!: NgForm;
+
+  initForm = {
+    producto: 'RTX 4080T',
+    precio: 10,
+    existecias: 10,
+  };
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -26,10 +33,11 @@ export class BasicosComponent implements OnInit {
   }
 
   guardar() {
-    console.log(this.miFormulario);
-    if (this.miFormulario.controls.precio.value < 0) {
-      console.log('No poestado');
-      return;
-    }
+    console.log('Posteo Correcto');
+    this.miFormulario.resetForm({
+      producto: 'Producto',
+      precio: 0,
+      existencias: 0,
+    });
   }
 }
